@@ -1,33 +1,22 @@
 from django.contrib.auth.models import User
 from knox.auth import TokenAuthentication
-from rest_framework.generics import ListAPIView
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated
 
 from portfolio.commons.mixins.viewsets import ListCreateUpdateRetrieveViewSetMixin, ListRetrieveViewSetMixin
-from portfolio.user.api.v1.serializers.user import UserInfoSerializer, UserAboutSerializer, WhatIDoSerializer, \
-    UserSerializer
-from portfolio.user.models import UserInfo, UserAbout, WhatIDo
+from portfolio.user.api.v1.serializers.user import UserInfoSerializer, UserSerializer
+from portfolio.user.models import UserInfo
 
 
 class UserInfoViewSet(ListCreateUpdateRetrieveViewSetMixin):
     lookup_field = 'uuid'
     lookup_url_kwarg = 'uuid'
-    queryset = UserInfo.objects.all()
     serializer_class = UserInfoSerializer
 
-
-class UserAboutViewSet(ListCreateUpdateRetrieveViewSetMixin):
-    lookup_field = 'uuid'
-    lookup_url_kwarg = 'uuid'
-    queryset = UserAbout.objects.all()
-    serializer_class = UserAboutSerializer
-
-
-class WhatIDoViewSet(ListCreateUpdateRetrieveViewSetMixin):
-    lookup_field = 'uuid'
-    lookup_url_kwarg = 'uuid'
-    queryset = WhatIDo.objects.all()
-    serializer_class = WhatIDoSerializer
+    def get_queryset(self):
+        username = self.request.query_params.get('username', None)
+        if username:
+            return UserInfo.objects.filter(user__username=username)
+        return UserInfo.objects.filter(user__username="dummy")
 
 
 class UserViewSet(ListRetrieveViewSetMixin):

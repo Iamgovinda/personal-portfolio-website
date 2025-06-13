@@ -1,12 +1,13 @@
+from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.db import models
 
 # Create your models here.
 from portfolio.commons.models import UUIDBaseModel, FileUpload
-from portfolio.resume.constant import SKILL_TYPE, DESIGN
 
 
 class Education(UUIDBaseModel):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=100, null=True, blank=True)
     institute_name = models.CharField(max_length=100, null=True, blank=True)
     start_date = models.DateField()
@@ -23,6 +24,7 @@ class Education(UUIDBaseModel):
 
 
 class Experience(UUIDBaseModel):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=100, null=True, blank=True)
     company_name = models.CharField(max_length=100, null=True, blank=True)
     start_date = models.DateField()
@@ -39,6 +41,7 @@ class Experience(UUIDBaseModel):
 
 
 class Certificate(UUIDBaseModel):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=200, null=True, blank=True)
     certificate_id = models.CharField(max_length=150, null=True, blank=True)
     certification_date = models.DateField()
@@ -51,10 +54,9 @@ class Certificate(UUIDBaseModel):
 
 
 class Skill(UUIDBaseModel):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=150, null=True, blank=True)
     skill_rate = models.PositiveIntegerField()
-
-    # type = models.CharField(choices=SKILL_TYPE, default=DESIGN, max_length=100)
 
     def __str__(self):
         return self.title
