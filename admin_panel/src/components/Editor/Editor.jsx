@@ -13,7 +13,7 @@ import { get } from '../../API/axios';
 import { toast } from "react-toastify";
 import styles from './Editor.module.scss';
 import { Button } from "@mui/material";
-
+import { YoutubeEmbed } from "editorjs-youtube-embed";
 
 
 function Editor(props) {
@@ -132,16 +132,9 @@ function Editor(props) {
           },
           embed: {
             class: Embed,
-            inlineToolbar: true,
             config: {
               services: {
                 youtube: true,
-                vimeo: true,
-                codepen: {
-                  embedUrl: "https://codepen.io/$1/embed/$2/?theme-id=light&default-tab=result",
-                  html: '<iframe width="100%" height="300" frameborder="no" scrolling="no" allowtransparency="true" allowfullscreen="true" src="%embed_url%" class="codepen"></iframe>',
-                  height: 300,
-                },
               },
             },
           },

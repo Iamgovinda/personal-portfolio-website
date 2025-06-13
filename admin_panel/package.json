@@ -33,6 +33,7 @@
     "editorjs-parser": "^1.5.3",
     "editorjs-react-renderer": "^3.5.1",
     "editorjs-video": "^1.1.0",
+    "editorjs-youtube-embed": "^1.0.3",
     "react": "^18.2.0",
     "react-bootstrap-sidebar-menu": "^2.0.3",
     "react-dom": "^18.2.0",

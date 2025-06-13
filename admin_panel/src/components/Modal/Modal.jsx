@@ -9,7 +9,6 @@ import styles from './Modal.module.scss';
 import { Box, TextField } from '@mui/material';
 import { useForm } from "react-hook-form";
 import { post } from '../../API/axios';
-import { toast } from 'react-toastify';
 const style = {
   position: 'absolute',
   top: '50%',
@@ -25,7 +24,6 @@ const style = {
 export default function BasicModal(props) {
   // const [open, setOpen] = React.useState(props.open);
   const [thumbnail, setThumbnail] = React.useState();
-  const [thumbnailUUID, setThumbnailUUID] = React.useState();
   const handleClose = () => props?.setOpen(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));

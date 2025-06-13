@@ -1,9 +1,5 @@
 import React from 'react';
-import SideBar from '../components/SideBar/SideBar';
-import NavigationBar from '../components/NavBar/Navbar';
 import styles from './MasterLayer.module.scss';
-import { Icon } from '@iconify/react';
-import { Row, Col, Container } from 'react-bootstrap';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';

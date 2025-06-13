@@ -13,6 +13,7 @@ import CodeBox from '@bomdi/codebox';
 import { get } from '../../API/axios';
 import { toast } from "react-toastify";
 import { Button } from "@mui/material";
+const YoutubeEmbed = require('editorjs-youtube-embed');
 
 
 
