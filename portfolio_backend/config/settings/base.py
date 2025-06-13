@@ -30,7 +30,8 @@ INSTALLED_APPS = [
     'portfolio.testimonial',
     'portfolio.client',
     'portfolio.contact',
-    'portfolio.Blog'
+    'portfolio.Blog',
+    'seeder'
 ]
 
 MIDDLEWARE = [
@@ -66,8 +67,6 @@ TEMPLATES = [
 CORS_ALLOW_ALL_ORIGINS = True
 
 WSGI_APPLICATION = 'config.wsgi.application'
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -158,9 +157,8 @@ SWAGGER_SETTINGS = {
     },
 }
 AUTHENTICATION_BACKENDS = (
-        'django.contrib.auth.backends.ModelBackend',
-    )
-
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 APP_HEADER_INFORMATION = {
     'APP_NAME': 'x-levelup-app-name',
