@@ -20,7 +20,8 @@ const BlogPage = () => {
     // const [page, setPage] = React.useState(1);
     const filters = {
         limit: limit,
-        offset: offset
+        offset: offset,
+        username: user?.username || process.env.REACT_APP_USER_USERNAME,
     }
     useEffect(() => {
         if (isLoading) {
@@ -69,7 +70,7 @@ const BlogPage = () => {
 
     const fetchData = () => {
         // console.log("Now filter: ", filters);
-        get(`/blog`, { limit: limit, offset: offset + 5 }).then((response) => {
+        get(`/blog`, { limit: limit, offset: offset + 5, username: process.env.REACT_APP_USER_USERNAME }).then((response) => {
             if (response.status === 200) {
                 setBlog([...blog, ...response.data?.results]);
             }

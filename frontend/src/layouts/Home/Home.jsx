@@ -4,7 +4,7 @@ import styles from "./Home.module.scss";
 import WhatIDo from "../WhatIDo/WhatIDo";
 import Resume from "../Resume/Resume";
 import TestimonialLayout from "../Testimonial/TestimonialLayout";
-import ClientLayout from "../ClientLayout/ClientLayout";
+// import ClientLayout from "../ClientLayout/ClientLayout";
 import BlogLayout from "../Blog/Blog";
 import Contact from "../../components/Contact/Contact";
 import { useState } from "react";
@@ -14,11 +14,7 @@ import { useUserContext } from "../../context/UserContext";
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   // const [Error, isError] = useState(false);
-  const [userAbout, setUserAbout] = useState([]);
   const [userInfo, setUserInfo] = useState([]);
-  const [resume, setResume] = useState([]);
-  const [testimonial, setTestimonial] = useState([]);
-  const [client, setClient] = useState([]);
 
   const {setUserData} = useUserContext();
 
@@ -26,37 +22,11 @@ const Home = () => {
 
   useEffect(()=>{
     if(isLoading){
-      get(`/user/about/`).then((response)=>{
-        if(response.status===200){
-          setUserAbout(response.data.results);
-          setIsLoading(false);
-        }
-      })
-      get(`/user/info/`).then((response)=>{
+      get(`/user/info/`, {"username": process.env.REACT_APP_USER_USERNAME}).then((response)=>{
         if(response.status===200){
           setUserInfo(response.data.results);
           setIsLoading(false);
-          setUserData(response.data?.results?.[0]);
-        }
-      })
-      get(`/resume/`).then((response)=>{
-        if(response.status===200){
-          setResume(response.data);
-          setIsLoading(false);
-        }
-      })
-
-      get(`/testimonial/`).then((response)=>{
-        if(response.status===200){
-          setTestimonial(response.data.results);
-          setIsLoading(false);
-        }
-      })
-
-      get(`/client/`).then((response)=>{
-        if(response.status===200){
-          setClient(response.data.results);
-          setIsLoading(false);
+          setUserData(response.data?.results[0]);
         }
       })
     }
@@ -64,19 +34,20 @@ const Home = () => {
   return (
     <>
       <div className={styles["parent"]}>
-        <UserInfo1 data={userInfo} about={userAbout} loading={isLoading}/>
+        <UserInfo1 data={userInfo} loading={isLoading}/>
         <div className={styles["blur"]}></div>
         <div className={styles["blur2"]}></div>
         <div className={styles["blur3"]}></div>
       </div>
-      <WhatIDo email={userInfo[0]?.email}/>
-      <Resume data={resume} loading={isLoading}/>
-      <BlogLayout loading={isLoading}/>
-      <TestimonialLayout data={testimonial} loading={isLoading}/>
-      {
+
+      <WhatIDo email={userInfo[0]?.email} what_i_do_items={userInfo?.[0]?.what_i_do_items} loading={isLoading} what_i_do_desc={userInfo[0]?.what_i_do_desc}/>
+      <Resume data={userInfo[0]} loading={isLoading}/>
+      <BlogLayout/>
+      <TestimonialLayout data={userInfo[0]?.testimonials} loading={isLoading}/>
+      {/* {
       client && <ClientLayout data={client}/>
-      }
-      <Contact data={userInfo} about={userAbout}/>
+      } */}
+      <Contact data={userInfo[0]}/>
     </>
   );
 };

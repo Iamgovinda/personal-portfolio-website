@@ -41,7 +41,7 @@ const BlogLayout = (props) => {
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         if (isLoading) {
-            get(`/blog/`).then((response) => {
+            get(`/blog/`, {username: process.env.REACT_APP_USER_USERNAME}).then((response) => {
                 if (response.status === 200) {
                     setBlog(response.data?.results);
                     setIsLoading(false);
@@ -90,7 +90,7 @@ const BlogLayout = (props) => {
     };
     return (
         <Container id='blog' className='blog'>{
-            (props?.loading) ? (
+            (isLoading) ? (
                 <>
                     <Skeleton width={'8rem'} height={'3rem'} />
                     <hr />
@@ -103,7 +103,7 @@ const BlogLayout = (props) => {
                         {
                             (blog && blog.length > 0) && (<>
                                 <div className='blog-title'>
-                                    <p>Blog</p>
+                                    <p>Blogs</p>
                                     {
                                         (blog?.length > 4) && <Link className={'view-all'} to='/all-blogs'>view all</Link>
                                     }

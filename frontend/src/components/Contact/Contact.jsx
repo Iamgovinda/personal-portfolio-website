@@ -30,7 +30,7 @@ const Contact = (props) => {
                             </div>
                             <div className="info-text">
                                 <p className={styles['info-text-1']}>Address: </p>
-                                <p className={styles['info-text-2']}>{props?.data[0]?.address}</p>
+                                <p className={styles['info-text-2']}>{props?.data?.address}</p>
                             </div>
                         </div>
                         <div className={styles['info-box']}>
@@ -39,7 +39,7 @@ const Contact = (props) => {
                             </div>
                             <div className="info-text">
                                 <p className={styles['info-text-1']}>My Email: </p>
-                                <p className={styles['info-text-2']}>{props?.data[0]?.email}</p>
+                                <p className={styles['info-text-2']}>{props?.data?.email}</p>
                             </div>
                         </div>
                         <div className={styles['info-box']}>
@@ -48,13 +48,13 @@ const Contact = (props) => {
                             </div>
                             <div className="info-text">
                                 <p className={styles['info-text-1']}>Call Me Now: </p>
-                                <p className={styles['info-text-2']}>{props?.data[0]?.phone}</p>
+                                <p className={styles['info-text-2']}>{props?.data?.phone}</p>
                             </div>
                         </div>
 
                         <div className={styles["connections"]}>
                             <div className={styles["connections-icon-box"]}>
-                                <a href={props?.about[0]?.social_links?.facebook}
+                                <a href={props?.data?.social_links?.facebook}
                                     target="_blank"
                                     style={{ textDecoration: "none" }}
                                     rel="noopener noreferrer"
@@ -63,7 +63,7 @@ const Contact = (props) => {
                                 </a>
                             </div>
                             <div className={styles["connections-icon-box"]}>
-                                <a href={props?.about[0]?.social_links?.youtube}
+                                <a href={props?.data?.social_links?.youtube}
                                     target="_blank"
                                     style={{ textDecoration: "none" }}
                                     rel="noopener noreferrer"
@@ -72,7 +72,7 @@ const Contact = (props) => {
                                 </a>
                             </div>
                             <div className={styles["connections-icon-box"]}>
-                                <a href={props?.about[0]?.social_links?.linkedln}
+                                <a href={props?.data?.social_links?.linkedln}
                                     target="_blank"
                                     style={{ textDecoration: "none" }}
                                     rel="noopener noreferrer"
@@ -81,7 +81,7 @@ const Contact = (props) => {
                                 </a>
                             </div>
                             <div className={styles["connections-icon-box"]}>
-                                <a href={props?.about[0]?.social_links?.instagram}
+                                <a href={props?.data?.social_links?.instagram}
                                     target="_blank"
                                     style={{ textDecoration: "none" }}
                                     rel="noopener noreferrer"
@@ -90,7 +90,7 @@ const Contact = (props) => {
                                 </a>
                             </div>
                             <div className={styles["connections-icon-box"]}>
-                                <a href={props?.about[0]?.social_links?.twitter}
+                                <a href={props?.data?.social_links?.twitter}
                                     target="_blank"
                                     style={{ textDecoration: "none" }}
                                     rel="noopener noreferrer"

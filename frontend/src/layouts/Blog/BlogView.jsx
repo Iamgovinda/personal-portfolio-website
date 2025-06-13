@@ -17,6 +17,7 @@ const BlogView = (props) => {
         setBlogData(JSON.parse(response?.data?.content));
       }
     })
+    //eslint-disable-next-line
   }, [])
   return (
     <>

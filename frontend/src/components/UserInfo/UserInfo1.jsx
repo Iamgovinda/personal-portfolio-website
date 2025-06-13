@@ -7,7 +7,7 @@ import UserInfoCard from "./UserInfoCard";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import UserInfo1Skeleton from "../skeleton/UserInfo1Skeleton";
-import { TypeAnimation } from 'react-type-animation';
+// import { TypeAnimation } from 'react-type-animation';
 const UserInfo1 = (props) => {
     return (
         <Container>
@@ -22,30 +22,13 @@ const UserInfo1 = (props) => {
                             <Col md={7} lg={7} className={styles['left']}>
                                 <div>
                                     <p className={styles['text-1']}>Hello, I’m {props?.data[0]?.name}</p>
-                                    {/* <TypeAnimation
-                                        // Same String at the start will only be typed once, initially
-                                        sequence={[
-                                            `Hello, I’m ${props?.data[0]?.name}`,
-                                            1000
-                                        ]}
-                                        speed={50} // Custom Speed from 1-99 - Default Speed: 40
-                                        style={{ fontSize: '2em' }}
-                                        wrapper="span" // Animation will be rendered as a <span>
-                                        // repeat={Infinity} // Repeat this Animation Sequence infinitely
-                                        className={styles}
-                                    /> */}
                                     <p className={styles['text-2']}>
-                                        {/* {(props?.data[0]?.description) ? props?.data[0]?.description : (
-                                <>
-                                    <Skeleton count={8}/>
-                                </>
-                            )} */}
                                         {props?.data[0]?.description}
                                     </p>
                                     <MyButton txt="Say Hello" email={props?.data[0]?.email} text='user info 1' />
 
                                 </div>
-                                {/* 
+                                
                     <div className={styles['user-data-box']}>
                         <div style={{ padding: '10px' }} className={styles['user-data']}>
                             <div className={styles['user-data-common']}>
@@ -61,7 +44,7 @@ const UserInfo1 = (props) => {
                                 <p className={styles['user-text']}>Happy Clients</p>
                             </div>
                         </div>
-                    </div> */}
+                    </div>
                             </Col>
                             <Col md={5} lg={5} className={styles['col-right']}>
                                 <img src={props?.data[0]?.main_image?.file ?? userImg} alt="user-img" className={styles['user-img']} />
@@ -71,7 +54,7 @@ const UserInfo1 = (props) => {
                     </>
                 )
             }
-            <UserInfoCard about={props?.about} loading={props?.loading} />
+            <UserInfoCard about={props?.data[0]} loading={props?.loading} />
         </Container>
     );
 };

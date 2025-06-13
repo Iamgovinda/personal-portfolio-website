@@ -11,26 +11,13 @@ import {
 } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import ResumeSkeleton from "../../components/skeleton/ResumeSkeleton";
+import cert from '../../assets/icons/cert.png';
 
 
 
 
 const Resume = (props) => {
     const [tab, setTab] = useState('education');
-    // const [bgColor, setBgColor] = useState("#a53dff");
-    // const items = [{
-    //     title: "May 1940",
-    //     cardTitle: "Dunkirk",
-    //     url: "http://www.history.com",
-    //     cardSubtitle: "Men of the British Expeditionary Force (BEF) wade out to..",
-    //     cardDetailedText: "Men of the British Expeditionary Force (BEF) wade out to..",
-    //     media: {
-    //         type: "IMAGE",
-    //         source: {
-    //             url: "http://someurl/image.jpg"
-    //         }
-    //     }
-    // }];
     const handleChange1 = () => {
         setTab('education');
     }
@@ -60,7 +47,7 @@ const Resume = (props) => {
                                     <>
                                         <Timeline lineColor={'#ddd'} >
                                             {
-                                                props?.data?.education?.map((item) => {
+                                                props?.data?.educations?.map((item) => {
                                                     return (
                                                         <>
                                                             <TimelineItem
@@ -89,7 +76,7 @@ const Resume = (props) => {
                                     <>
                                         <Timeline lineColor={'#ddd'} >
                                             {
-                                                props?.data?.experience?.map((item) => {
+                                                props?.data?.experiences?.map((item) => {
                                                     return (
                                                         <>
                                                             <TimelineItem
@@ -117,7 +104,7 @@ const Resume = (props) => {
                                         <p className={styles["certificate"]}>Certificates</p>
                                         <Row>
                                             {
-                                                props?.data?.certificate && props?.data?.certificate?.map((item, index) => {
+                                                props?.data?.certificates && props?.data?.certificates?.map((item, index) => {
                                                     return <>
                                                         <Col lg={6} key={index}>
                                                             <a
@@ -126,11 +113,13 @@ const Resume = (props) => {
                                                                 style={{ textDecoration: "none" }}
                                                                 rel="noopener noreferrer"
                                                             >
-                                                                <div className={styles["cert-parent"]}>
+                                                                <div className={styles["cert-parent"]} onClick={()=>{
+                                                                    window.open(item?.link, "_blank");
+                                                                }}>
                                                                     {/* <img src="https://www.sololearn.com/Certificate/CT-BEND7IBK/jpg" alt="certi-img"/> */}
                                                                     <div className={styles["cert-img-box"]}>
                                                                         <img
-                                                                            src={item?.link}
+                                                                            src={item?.image?.file ?? cert}
                                                                             alt="certi-img"
                                                                             className={styles["cert-img"]}
                                                                         />
